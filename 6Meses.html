@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Meses Contigo Meu Amor! 💖</title>
+    <style>
+        body {
+            font-family: 'Courier New', cursive;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .card-container {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            perspective: 1000px;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 1s ease-in-out;
+        }
+        .card.open {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .card-front {
+            background: #ffccd5;
+            cursor: pointer;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+            flex-direction: column;
+            padding: 20px;
+        }
+        .message {
+            font-size: 1em;
+            color: #d81b60;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        @keyframes float-hearts {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 1.5em;
+            animation: float-hearts 4s infinite linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card" id="loveCard">
+            <div class="card-front" onclick="openCard()">6 Meses Contigo Meu Amor! 💖</div>
+            <div class="card-back">
+                <p class="message">Meu amor,<br><br>Hoje fazemos 6 meses juntos, e não podia estar mais feliz por te ter comigo. Cada momento que passamos juntos é muito especial e cheio de significado para mim. Amo as nossas discussões, idas ao cinema, tudo.<br><br>Obrigado por teres aparecido na minha vida, espero estar contigo muito mais tempo.<br><br>Amo-te para sempre,<br><br>João Vilaça 💕</p>
+                <img src="your-photo.jpg" alt="Nossa Foto">
+            </div>
+        </div>
+    </div>
+    <audio id="loveSong" src="your-song.mp3"></audio>
+    <script>
+        function openCard() {
+            document.getElementById("loveCard").classList.add("open");
+            document.getElementById("loveSong").play();
+        }
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
